@@ -1,10 +1,11 @@
 import React from 'react';
+
 import { Container, Repository } from './styles';
 
 const CompareList = ({ repositories }) => (
   <Container>
     {repositories.map(repository => (
-      <Repository>
+      <Repository key={repository.id}>
         <header>
           <img src={repository.owner.avatar_url} alt={repository.owner.login} />
           <strong>{repository.name}</strong>
@@ -12,20 +13,19 @@ const CompareList = ({ repositories }) => (
         </header>
         <ul>
           <li>
-            {repository.stargazers_count}
+            {`${repository.stargazers_count} `}
             <small>stars</small>
           </li>
-
           <li>
-            {repository.forks_count}
+            {`${repository.forks_count} `}
             <small>forks</small>
           </li>
           <li>
-            {repository.open_issues_count}
+            {`${repository.open_issues_count} `}
             <small>issues</small>
           </li>
           <li>
-            {repository.pushed_at}
+            {`${repository.last_commit} `}
             <small>last commit</small>
           </li>
         </ul>

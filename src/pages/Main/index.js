@@ -14,8 +14,12 @@ export default class Main extends Component {
     e.preventDefault();
 
     try {
-      const response = api.get(`/repos/${this.state.repositoryInput}`);
-      console.log(response);
+      const response = await api.get(`/repos/${this.state.repositoryInput}`);
+
+      this.setState({
+        repositoryInput: '',
+        repositories: [...this.state.repositories, response.data],
+      });
     } catch (err) {
       console.log(err);
     }
